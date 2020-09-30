@@ -3,7 +3,8 @@ module Lib
     ( someFunc
     ) where
 
-import qualified Data.Text.IO as T
+import Snap.Core(ifTop, writeText)
+import Snap.Http.Server (quickHttpServe)
 
 someFunc :: IO ()
-someFunc = T.putStrLn "someFunc"
+someFunc = quickHttpServe $ ifTop(writeText "Hello World")
